@@ -75,18 +75,27 @@ export function Avatar({
 }) {
   const dot = (
     <View
-      style={{ width: size * 0.22, height: size * 0.22, borderRadius: 999, backgroundColor: colors.ok, borderWidth: 2, borderColor: colors.surface }}
-      className="absolute bottom-0 right-0"
+      style={{
+        position: "absolute",
+        bottom: size * 0.045,
+        right: size * 0.045,
+        width: size * 0.24,
+        height: size * 0.24,
+        borderRadius: 999,
+        backgroundColor: colors.ok,
+        borderWidth: 2.5,
+        borderColor: colors.surface,
+      }}
     />
   );
   const content = (
-    <Text style={{ fontSize: size * 0.32 }} className={`font-bold ${textClass}`}>{initials}</Text>
+    <Text style={{ fontSize: size * 0.32, textAlign: "center", textAlignVertical: "center", includeFontPadding: false, transform: [{ translateY: size * 0.28 }] }} className={`font-bold ${textClass}`}>{initials}</Text>
   );
   if (gradient) {
     return (
       <View style={{ width: size, height: size }} className="items-center justify-center">
         <LinearGradient colors={gradients.gold} style={{ width: size, height: size, borderRadius: 999 }} className="items-center justify-center">
-          <Text style={{ fontSize: size * 0.32, color: "#3a2d08" }} className="font-bold">{initials}</Text>
+          <Text style={{ fontSize: size * 0.32, color: "#3a2d08", textAlign: "center", textAlignVertical: "center", includeFontPadding: false, transform: [{ translateY: size * 0.28 }] }} className="font-bold">{initials}</Text>
         </LinearGradient>
         {online && dot}
       </View>
