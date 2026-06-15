@@ -16,6 +16,9 @@ profile — wired to a Supabase backend.
 | Matching      | pgvector cosine similarity + rule-based fallback          |
 | AI advisor    | Anthropic Claude API via Supabase Edge Function (stubbed) |
 
+## Prerequisites 
+Make sure to download **Expo Go** in your mobile phone
+
 ## Run it
 
 ```bash
@@ -34,16 +37,13 @@ Press `i` (iOS simulator), `a` (Android), or scan the QR with Expo Go.
 
 ## Wire up Supabase
 
-1. Create a project at https://supabase.com.
-2. In the SQL Editor, run `supabase/schema.sql`. This creates all tables,
-   row-level security, the mutual-match trigger, the `get_swipe_deck()` ranking
-   function, and seed companies/roles.
-3. Copy `.env.example` to `.env` and fill in (create a .env file if it doesn't exist):
+
+1. Copy `.env.example` to `.env` and fill in (create a .env file if it doesn't exist):
    ```
-   EXPO_PUBLIC_SUPABASE_URL=https://YOUR-PROJECT.supabase.co
-   EXPO_PUBLIC_SUPABASE_ANON_KEY=YOUR-ANON-KEY
+   EXPO_PUBLIC_SUPABASE_URL=https://edzchzjupgmvjwnazrty.supabase.co/rest/v1/
+   EXPO_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_u7NLPBamKOm9aPFynTGMKw_JsCYipma
    ```
-4. Restart Expo. `src/data/repo.ts` detects the credentials and switches every
+2. Restart Expo. `src/data/repo.ts` detects the credentials and switches every
    screen from mock data to live Supabase queries automatically.
 
 ## How the data flows
@@ -76,7 +76,6 @@ supabase/schema.sql      full backend schema
 
 ## Next steps toward production
 
-- Replace the stubbed advisor with a Supabase Edge Function calling Claude.
 - Add Supabase Auth screens (sign-up flow + persona assessment write).
 - Enable Realtime on `messages` for live chat after a match.
 - Generate `embedding` vectors on profile/role create for real matching.
